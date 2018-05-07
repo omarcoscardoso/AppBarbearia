@@ -6,8 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -23,9 +24,11 @@ public class Venda implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int quantidade;
+    private String data_venda;
     @OneToMany
     private Collection<Produto> produto;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public Long getId() {
@@ -43,7 +46,15 @@ public class Venda implements Serializable {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+    
+    public String getData_venda() {
+        return data_venda;
+    }
 
+    public void setData_venda(String data_venda) {
+        this.data_venda = data_venda;
+    }
+    
     public Collection<Produto> getProduto() {
         return produto;
     }
