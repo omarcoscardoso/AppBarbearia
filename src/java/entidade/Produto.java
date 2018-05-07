@@ -1,14 +1,12 @@
 package entidade;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -25,7 +23,6 @@ public class Produto implements Serializable {
     private Long id;
     private String nome;
     private float valor;
-    
     @ManyToOne
     @JoinColumn(name = "promocao_id")
     private Promocao promocao;
